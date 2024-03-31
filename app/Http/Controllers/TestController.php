@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\idea;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -11,7 +12,14 @@ class TestController extends Controller
      */
     public function index()
     {
-        return view('ideas');
+        $idea = new Idea([
+            'content' => 'wassup ma nigga'
+        ]);
+        $idea->save();
+
+        return view('ideas', [
+            'ideas' => Idea::orderBy('created_at', 'DESC')->get()
+        ]);
     }
 
     /**
