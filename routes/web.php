@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TestController::class , 'index']);
+Route::get('/', [TestController::class , 'index'])->name('index.idea');
+
+Route::post('/idea', [IdeaController::class , 'store'])->name('idea.create');
+
 
 Route::get('/terms', function(){
     return view('terms');

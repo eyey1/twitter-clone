@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\idea;
 use Illuminate\Http\Request;
+use App\Models\idea;
 
-class TestController extends Controller
+class IdeaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('ideas', [
-            'ideas' => Idea::orderBy('created_at', 'DESC')->get()
-        ]);
+        //
     }
 
     /**
@@ -30,7 +28,13 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idea = idea::create(
+            [
+            'content' => request()->get('ideasForm', '')
+            ]
+        );
+
+        return redirect()->route('index.idea');
     }
 
     /**
