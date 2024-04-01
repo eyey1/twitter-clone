@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="col-6">
-            
+            @include('handler.success-message')
             @include('handler.submit-me')
             <hr>
             @foreach ($ideas as $idea)
@@ -46,6 +46,7 @@
                    @include('handler.idea-card')
                 </div>
             @endforeach
+            <div class="mt-2">{{ $ideas->links() }}</div>
         </div>
         <div class="col-3">
             <div class="card">

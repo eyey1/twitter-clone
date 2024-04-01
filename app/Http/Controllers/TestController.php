@@ -13,7 +13,7 @@ class TestController extends Controller
     public function index()
     {
         return view('ideas', [
-            'ideas' => Idea::orderBy('created_at', 'DESC')->get()
+            'ideas' => Idea::orderBy('created_at', 'DESC')->paginate(5)
         ]);
     }
 

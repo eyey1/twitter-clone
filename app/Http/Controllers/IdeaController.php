@@ -28,13 +28,18 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate([
+            'idea' => 'required|min:3|max:240'
+        ]);
+
         $idea = idea::create(
             [
             'content' => request()->get('ideasForm', '')
             ]
         );
 
-        return redirect()->route('index.idea');
+        return redirect()->route('index.idea')->with('success', 'Idea was created successfully!');
     }
 
     /**
