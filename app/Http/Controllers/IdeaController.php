@@ -30,12 +30,12 @@ class IdeaController extends Controller
     {
 
         request()->validate([
-            'idea' => 'required|min:3|max:240'
+            'content' => 'required|min:3|max:240'
         ]);
 
         $idea = idea::create(
             [
-            'content' => request()->get('ideasForm', '')
+                'content' => request()->get('content', '')
             ]
         );
 
@@ -53,17 +53,26 @@ class IdeaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Idea $idea)
     {
-        //
+        $editing = true;
+
+        return view('ideas.show', compact('idea', 'editing'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Idea $idea)
     {
-        //
+        request()->validate([
+            'content' => 'required|min:3|max:240'
+        ]);
+
+        $idea->content = request()->get('content', '');
+        $idea->save();
+
+        return redirect()->route('ideas.show', $idea->id)->with('success', "Idea has been edited!!");
     }
 
     /**
