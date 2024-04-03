@@ -7,9 +7,14 @@
         </div>
         <div class="col-6">
             @include('handler.success-message')
-            <div class="mt-3">
-                @include('handler.idea-card')
-            </div>
+            @include('handler.submit-me')
+            <hr>
+            @foreach ($ideas as $idea)
+                <div class="mt-3">
+                    @include('handler.idea-card')
+                </div>
+            @endforeach
+            <div class="mt-2">{{ $ideas->links() }}</div>
         </div>
         <div class="col-3">
             @include('handler.search-bar')

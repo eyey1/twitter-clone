@@ -82,6 +82,6 @@ class IdeaController extends Controller
     {
         $id->delete();     
 
-        return redirect()->route('index.idea')->with('success', 'Idea was successfully deleted!');
+        return redirect()->route('twitter')->with('success', 'Idea was successfully deleted!');
     }
 }

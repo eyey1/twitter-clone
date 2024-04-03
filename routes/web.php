@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TestController::class , 'index'])->name('index.idea');
+Route::get('/', [TestController::class , 'index'])->name('twitter');
 
 Route::post('/ideas', [IdeaController::class , 'store'])->name('ideas.store');
 
